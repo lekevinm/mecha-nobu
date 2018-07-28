@@ -9,8 +9,6 @@ Uses R6S API and TRN Fortnite Tracker for game stats, Anilist API to retrieve an
 
 Still adding and refining features, no official documentation until finished.
 
-Current useful commands:
-
 YouTube playback: !play (url or query) !volume (int) !skip !pause !resume !queue !stop
 
 Game stats: !r6 (player) !fn (player)
