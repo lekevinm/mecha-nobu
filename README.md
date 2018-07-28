@@ -1,4 +1,4 @@
-Discord bot intended for personal server use, but can be added to other servers here. This is a very early alpha version of Mecha Nobu so expect only basic functionality and some bugs. 
+Discord bot intended for personal server use, but can be added to other servers. This is a very early alpha version of Mecha Nobu so expect only basic functionality and some bugs. 
 
 Currently hosting Mecha Nobu on my laptop so uptime is not guaranteed, may look into a Rasberry Pi or a cloud hosting solution in the future.
 
