@@ -13,10 +13,10 @@ Still adding and refining features, no official documentation until finished.
 
 # Useful Commands
 
-**YouTube playback:** !play *url or query* !volume *int* !skip !pause !resume !queue !stop
+**YouTube playback:** !play (url or query) !volume (percentage) !skip !pause !resume !queue !stop
 
-**Game stats:** !r6 *player* !fn *player*
+**Game stats:** !r6 (username) !fn (username)
 
-**MyAnimeList:** !anime *query* !manga *query*
+**MyAnimeList:** !anime (title) !manga (title)
 
-**Miscellaneous:** !poll *question option1 option2 etc* !timer *minutes* !help
+**Miscellaneous:** !poll (question option1 option2 etc) !timer (minutes) !help
