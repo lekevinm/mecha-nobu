@@ -3,9 +3,9 @@ Discord bot intended for personal server use, but can be added to other servers 
 
 Currently hosting Mecha Nobu on my laptop so uptime is not guaranteed, may look into a Rasberry Pi or a cloud hosting solution in the future.
 
-Written in Python and uses the discord.py API (rewritten version).
+Written in Python using the discord.py API (rewritten version).
 
-Can also be cloned and run on a local machine, but will require additional installs for full functionality.
+Can also be cloned and run on a local machine, but will require additional libraries (r6sapi, youtube_dl) for full functionality.
 
 Uses R6S API and TRN Fortnite Tracker for game stats, Anilist API to retrieve anime/manga links, and youtube_dl to stream YouTube audio.
 
