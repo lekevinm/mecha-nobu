@@ -1,4 +1,3 @@
-# Mecha Nobu mk III
 Discord bot intended for personal server use, but can be added to other servers [here.](https://discordapp.com/oauth2/authorize?client_id=470992323057287188&scope=bot) This is a very early alpha version of Mecha Nobu so expect only basic functionality and some bugs. 
 
 Currently hosting Mecha Nobu on my laptop so uptime is not guaranteed, may look into a Rasberry Pi or a cloud hosting solution in the future.
