@@ -9,6 +9,7 @@ bot.load_extension('misc')
 bot.load_extension('music')
 bot.load_extension('mal')
 bot.load_extension('game')
+banned_words = ['nibba', 'overwatch', 'civ', 'civilization']
 
 @bot.event
 async def on_ready():
@@ -25,6 +26,12 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     # NSFW filter
+    if message.guild.id == auth.koquamserver and message.author.bot is False:
+    	for word in banned_words:
+    		if word in message.content.lower():
+    			await message.channel.send('\"{}\" is a banned word. Repeated use is not recommended.'.format(word))
+    			#await message.author.kick()
+    			print('Kicking ', message.author.name)
     await bot.process_commands(message)
 
 bot.run(token, bot=True, reconnect=True)

@@ -43,7 +43,7 @@ class MiscCommands:
 		embed.add_field(name="YouTube", value="Looking for suggestions", inline=False)
 		embed.add_field(name="MyAnimeList", value="Looking for suggestions", inline=False)
 		embed.add_field(name="Game Stats", value="Looking for suggestions", inline=False)
-		embed.add_field(name="Imageboards", value="Add Rule 34 boards and developer curated images", inline=False)
+		embed.add_field(name="Imageboards", value="Add image boards and developer curated images", inline=False)
 		embed.add_field(name="Miscellaneous", value="NSFW filter (temp bans for words like Civ and Overwatch)", inline=False)
 		await ctx.send(embed=embed)
 
@@ -84,9 +84,9 @@ class MiscCommands:
  			await ctx.send('Nobu cannot make a poll with more than ten options!')
  			return
  		if len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
- 			if ctx.message.guild.id == 119167860651065348:
+ 			if ctx.message.guild.id == auth.koquamserver:
  				reactions = ['<:maidFive1:361559302189613056>', '<:maidFive2:361559310452654081>']
- 			elif ctx.message.guild.id == 276446836489977856:
+ 			elif ctx.message.guild.id == auth.privateserver:
  				reactions = ['<:yes:454003160843812864>', '<:no:454003146864197635>']
  			else:
  				reactions = ['👍', '👎']
