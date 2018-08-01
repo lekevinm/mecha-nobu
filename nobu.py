@@ -9,6 +9,7 @@ bot.load_extension('misc')
 bot.load_extension('music')
 bot.load_extension('mal')
 bot.load_extension('game')
+bot.load_extension('image')
 banned_words = ['nibba', 'overwatch', 'civ', 'civilization']
 
 @bot.event
