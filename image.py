@@ -1,14 +1,10 @@
-import discord, requests, random, json
+import discord, requests, os, random, json
 from discord.ext import commands
 
 class ImageCommands:
 	def __init__(self, bot: commands.Bot):
 		self.bot = bot
-		dropbox = dict{'fate': 0, 'nobu': 0, 'scathach': 0, 'okita': 0, 'nero': 0, 'mashu': 0, 'anya_fgo': 0, 
-		'miku': 0, 'racingmiku': 0, 'idol': 0, 'anya': 0,
-		'persona': 0, 'rise': 0, 'makoto': 0,
-		'misc': 0, 'rem': 0, 'emilia': 0, 'pripri': 0, 'nier': 0, 'madoka': 0, 'houseki': 0,
-		'sumo': 0, 'yourname': 0, 'bbb': 0, 'biribiri': 0, 'overwatch': 0}
+		self.dropbox = loadDropbox()
 
 	@commands.command()
 	async def imagehelp(self, ctx):
@@ -23,8 +19,8 @@ class ImageCommands:
 
 	@commands.command()
 	async def image(self, ctx, image):
-		if image in dropbox:
-			image_number = randomImage(0, dropbox[image])
+		if image in self.dropbox:
+			image_number = randomImage(0, self.dropbox[image])
 			#store the number of images per folder in a dictionary
 			await ctx.send(file=discord.File('/Users/guest/Dropbox/{}/{} ({}).jpg'.format(image, image, image_number)))
 		else:
@@ -45,3 +41,15 @@ def setup(bot):
 
 def randomImage(min, max):
 	return random.randint(min,max)
+
+def loadDropbox():
+	folders = os.listdir("/Users/guest/Dropbox")
+	imagelist = {}
+	for folder in folders:
+		if folder.startswith('.') is False:
+			files = next(os.walk("/Users/guest/Dropbox/{}".format(folder)))[2]
+			imagecount = len(files) - 1
+			if os.path.isfile("/Users/guest/Dropbox/{}/.DS_Store".format(folder)):
+				imagecount -= 1
+			imagelist[folder] = imagecount
+	return imagelist
