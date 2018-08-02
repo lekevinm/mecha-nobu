@@ -23,6 +23,11 @@ async def on_ready():
     except Exception as e:
         print(e)
 
+@bot.event
+async def on_command_error(ctx, error):
+	if isinstance(error, discord.ext.commands.errors.MissingRequiredArgument):
+		await ctx.send("This command requires an input. Use !help to learn more.")
+
 #checks for banned words in my personal server 
 @bot.event
 async def on_message(message):

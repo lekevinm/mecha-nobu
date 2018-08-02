@@ -29,11 +29,11 @@ class MiscCommands:
 	@commands.command()
 	async def help(self, ctx):
 		embed = discord.Embed(title="Mecha Nobu mk III", description="", color=0xeee657)
-		embed.add_field(name="YouTube", value="!play !queue !skip !pause !resume !stop !volume", inline=False)
-		embed.add_field(name="MyAnimeList", value="!anime !manga", inline=False)
-		embed.add_field(name="Game Stats", value="!r6 !fn", inline=False)
+		embed.add_field(name="YouTube", value="!play [title] !queue !skip !pause !resume !stop !volume [percentage]", inline=False)
+		embed.add_field(name="MyAnimeList", value="!anime [title] !manga [title]", inline=False)
+		embed.add_field(name="Game Stats", value="!r6 [username] !fn [username]", inline=False)
 		embed.add_field(name="Imageboards", value="!imagehelp", inline=False)
-		embed.add_field(name="Miscellaneous", value="!poll !timer !whenissmash !whenisax !todo", inline=False)
+		embed.add_field(name="Miscellaneous", value="!poll [question] [choice1] [choice2] !timer [minutes] !whenissmash !whenisax !todo", inline=False)
 		await ctx.send(embed=embed)
 
 	#planned features for mecha nobu
