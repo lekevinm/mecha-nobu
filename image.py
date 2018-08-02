@@ -26,16 +26,6 @@ class ImageCommands:
 		else:
 			await ctx.send('\'{}\' is not a valid image command.'.format(image))
 
-	@commands.group()
-	async def imagetest(self, ctx):
-		if ctx.invoked_subcommand is None:
-			await ctx.send('Invalid image command passed...')
-
-	@imagetest.command()
-	async def test(self, ctx):
-		image_number = randomImage(0,100)
-		await ctx.send(file=discord.File('/Users/guest/Dropbox/nobu/nobu ({}).jpg'.format(image_number)))
-
 def setup(bot):
     bot.add_cog(ImageCommands(bot))
 
@@ -46,10 +36,11 @@ def loadDropbox():
 	folders = os.listdir("/Users/guest/Dropbox")
 	imagelist = {}
 	for folder in folders:
-		if folder.startswith('.') is False:
-			files = next(os.walk("/Users/guest/Dropbox/{}".format(folder)))[2]
+		if folder.startswith('.') is False and folder.endswith(('.png', '.jpg')) is False:
+			files = os.listdir("/Users/guest/Dropbox/{}".format(folder))
 			imagecount = len(files) - 1
 			if os.path.isfile("/Users/guest/Dropbox/{}/.DS_Store".format(folder)):
 				imagecount -= 1
 			imagelist[folder] = imagecount
+			#print("{}: {}".format(folder, imagecount))
 	return imagelist

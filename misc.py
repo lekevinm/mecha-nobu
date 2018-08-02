@@ -32,7 +32,7 @@ class MiscCommands:
 		embed.add_field(name="YouTube", value="!play !queue !skip !pause !resume !stop !volume", inline=False)
 		embed.add_field(name="MyAnimeList", value="!anime !manga", inline=False)
 		embed.add_field(name="Game Stats", value="!r6 !fn", inline=False)
-		embed.add_field(name="Imageboards", value="WIP", inline=False)
+		embed.add_field(name="Imageboards", value="!imagehelp", inline=False)
 		embed.add_field(name="Miscellaneous", value="!poll !timer !whenissmash !whenisax !todo", inline=False)
 		await ctx.send(embed=embed)
 
