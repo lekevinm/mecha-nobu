@@ -24,6 +24,10 @@ async def on_ready():
         print(e)
 
 @bot.event
+async def on_command(ctx):
+	print("{} used \"{}\" in #{} of {}".format(ctx.message.author, ctx.message.content, ctx.message.channel, ctx.message.guild))
+
+@bot.event
 async def on_command_error(ctx, error):
 	if isinstance(error, discord.ext.commands.errors.MissingRequiredArgument):
 		await ctx.send("This command requires an input. Use !help to learn more.")
