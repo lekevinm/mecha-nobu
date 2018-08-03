@@ -61,7 +61,7 @@ class AnimeCommands:
     
     #command that retrieves first manga result from Anilist and redirects to MyAnimeList
     @commands.command()
-    async def manga(self, ctx, query):
+    async def manga(self, ctx, *, query):
         self.variables['search'] = query
         self.response = requests.post(self.url, json={'query': self.query, 'variables': self.variables})
 

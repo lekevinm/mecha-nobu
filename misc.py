@@ -40,11 +40,11 @@ class MiscCommands:
 	@commands.command()
 	async def todo(self, ctx):
 		embed = discord.Embed(title="Things Planned for Mecha Nobu", description="", color=0xeee657)
-		embed.add_field(name="YouTube", value="Looking for suggestions", inline=False)
-		embed.add_field(name="MyAnimeList", value="Looking for suggestions", inline=False)
-		embed.add_field(name="Game Stats", value="Looking for suggestions", inline=False)
-		embed.add_field(name="Imageboards", value="Add image boards and developer curated images", inline=False)
-		embed.add_field(name="Miscellaneous", value="NSFW filter (temp bans for words like Civ and Overwatch)", inline=False)
+		embed.add_field(name="YouTube", value="Add options to play songs from list of search results", inline=False)
+		embed.add_field(name="MyAnimeList", value="Add more options when looking up anime/manga", inline=False)
+		embed.add_field(name="Game Stats", value="Add more options when looking up statistics", inline=False)
+		embed.add_field(name="Imageboards", value="Add image boards and options when requesting Dropbox images", inline=False)
+		embed.add_field(name="Miscellaneous", value="Add strike system to keep track of how many infractions a user has", inline=False)
 		await ctx.send(embed=embed)
 
 	#bot info

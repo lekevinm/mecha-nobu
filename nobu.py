@@ -10,7 +10,7 @@ bot.load_extension('music')
 bot.load_extension('mal')
 bot.load_extension('game')
 bot.load_extension('image')
-banned_words = ['nibba', 'overwatch', 'civ', 'civilization']
+banned_words = auth.banned_words
 
 @bot.event
 async def on_ready():
@@ -41,7 +41,7 @@ async def on_message(message):
     		if word in message.content.lower():
     			await message.channel.send('\"{}\" is a banned word. Repeated use is not recommended.'.format(word))
     			#await message.author.kick()
-    			print('Kicking ', message.author.name)
+    			print('Kicking {} for toxic behavior'.format(message.author.name))
     await bot.process_commands(message)
 
 bot.run(token, bot=True, reconnect=True)
