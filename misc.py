@@ -50,7 +50,7 @@ class MiscCommands:
 	#bot info
 	@commands.command()
 	async def info(self, ctx):
-		embed = discord.Embed(title="Mecha Nobu mk III", description="", color=0xeee657)
+		embed = discord.Embed(title="Mecha Nobu mk1", description="", color=0xeee657)
 		embed.add_field(name="Author", value="RacingMiku14")
 		embed.add_field(name="Server count", value=f"{len(self.bot.guilds)}")
 		embed.add_field(name="Invite", value="[Invite link](https://discordapp.com/oauth2/authorize?client_id=470992323057287188&scope=bot)")

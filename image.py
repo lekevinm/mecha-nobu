@@ -18,14 +18,20 @@ class ImageCommands:
 		await ctx.send(embed=embed)
 
 	@commands.command()
-	async def image(self, ctx, image):
+	async def image(self, ctx, *args):
+		image = args[0]
 		if image in self.dropbox:
-			image_number = randomImage(0, self.dropbox[image])
-			#store the number of images per folder in a dictionary
-			await ctx.send(file=discord.File('/Users/guest/Dropbox/{}/{} ({}).jpg'.format(image, image, image_number)))
+			if len(args) == 2:
+				image_number = int(args[1])
+				if (image_number >= 0) and (image_number <= self.dropbox[image]):
+					await ctx.send('{}/{}'.format(image_number, self.dropbox[image]), file=discord.File('/Users/guest/Dropbox/{}/{} ({}).jpg'.format(image, image, image_number)))
+				else:
+					await ctx.send('Image \'{}\' was not found in the folder \'{}\'.'.format(image_number, image))
+			else:
+				image_number = randomImage(0, self.dropbox[image])
+				await ctx.send('{}/{}'.format(image_number, self.dropbox[image]), file=discord.File('/Users/guest/Dropbox/{}/{} ({}).jpg'.format(image, image, image_number)))
 		else:
 			await ctx.send('\'{}\' is not a valid image command.'.format(image))
-
 def setup(bot):
     bot.add_cog(ImageCommands(bot))
 

@@ -33,6 +33,7 @@ async def on_command_error(ctx, error):
 		await ctx.send("This command requires an input. Use !help to learn more.")
 
 #checks for banned words in my personal server 
+'''
 @bot.event
 async def on_message(message):
     # NSFW filter
@@ -43,5 +44,6 @@ async def on_message(message):
     			#await message.author.kick()
     			print('Kicking {} for toxic behavior'.format(message.author.name))
     await bot.process_commands(message)
+'''
 
 bot.run(token, bot=True, reconnect=True)
