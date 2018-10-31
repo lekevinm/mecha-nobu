@@ -2,11 +2,19 @@ import discord, asyncio, requests
 from discord.ext import commands
 import auth
 import r6sapi
+import random
 
 class GameCommands:
 
 	def __init__(self, bot: commands.Bot):
 		self.bot = bot
+
+	# simple dice roll
+	# for DnD uses, may expand functionality
+	@commands.command()
+	async def d(self, ctx, number: int):
+		roll = random.randint(1, number)
+		await ctx.send(roll)
 
 	#uses TRN Fortnite Tracker API to pull player data
 	#planning to allow more options with this command but for now shows squad data
@@ -68,6 +76,44 @@ class GameCommands:
  		embed.add_field(name="Seasonal Matches", value = "Won: {} Lost: {} WL: {}".format(rank.wins, rank.losses, format(swlr, '.2f')), inline=False)
  		embed.add_field(name="KD Ratio", value = "KD: {} KDA: {}".format(format(kdr, '.2f'), format(kdar, '.2f')), inline=False)
  		await ctx.send(embed=embed)
+
+ 	# basic stat retrieval using bo4tracker.com
+ 	# may add more options depending on demand
+	@commands.command()
+	async def bo4(self, ctx, username):
+		username = username.replace('#', '%23', 1)
+		
+		r = requests.get('https://cod-api.theapinetwork.com/api/validate/bo4/{}/bnet'.format(username))
+		try:
+			bo4auth = r.json()
+		except ValueError:
+			await ctx.send("User not found in database.")
+			return
+
+		if bo4auth['success'] is False:
+			await ctx.send("User not found in database.")
+			return
+		else:
+
+ 			r2 = requests.get('https://cod-api.theapinetwork.com/api/stats/bo4/{}/bnet'.format(username))
+ 			bo4stats = r2.json()
+
+ 			ign = bo4stats['user']['username']
+ 			level = bo4stats['stats']['level']
+ 			wins = bo4stats['stats']['wins']
+ 			losses = bo4stats['stats']['losses']
+ 			kills = bo4stats['stats']['kills']
+ 			ekia = bo4stats['stats']['ekia']
+ 			deaths = bo4stats['stats']['deaths']
+ 			wlr = wins / losses
+ 			kdar = ekia / deaths
+ 			kdr = kills / deaths
+
+ 			embed = discord.Embed(title=ign, description="Level {}".format(level), color=0xeee657)
+ 			embed.add_field(name="Stats", value = "Kills: {} EKIA: {} Deaths: {}".format(kills, ekia, deaths), inline=False)
+ 			embed.add_field(name="Win/Loss Ratio", value = "Won: {} Lost: {} WL: {}".format(wins, losses, format(wlr, '.2f')), inline=False)
+ 			embed.add_field(name="KD Ratio", value = "KD: {} KDA: {}".format(format(kdr, '.2f'), format(kdar, '.2f')), inline=False)
+ 			await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(GameCommands(bot))
